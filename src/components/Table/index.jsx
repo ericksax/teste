@@ -1,10 +1,11 @@
 import { format } from "date-fns";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
 import { ptBR } from "date-fns/locale";
 import { useState } from "react";
 import { api } from "../../services/api";
-import { Icon } from "../CustonIcon";
+import { Icon } from "../CustomIcon";
 import styles from "../../../styles/Home.module.css";
+import Link from "next/link";
 
 export function CustomTable({ users }) {
   const [ordenar, setOrdenar] = useState(false);
@@ -12,7 +13,7 @@ export function CustomTable({ users }) {
   const formatedUsers = users?.map((user) => {
     return {
       ...user,
-      createdAt: format(new Date(user.createdAt), "dd/MM/yyyy -  HH:mm", {
+      createdAt: format(new Date(user.createdAt), "dd/MM/yyyy - HH:mm", {
         locale: ptBR,
       }),
     };
@@ -24,7 +25,7 @@ export function CustomTable({ users }) {
     });
   }
 
-  function getDestroy(id) {
+  function handleDestroy(id) {
     api
       .delete("/user", { data: { id } })
       .then((resp) => console.log(resp))
@@ -49,6 +50,7 @@ export function CustomTable({ users }) {
               <Icon setOrdenar={setOrdenar} ordenar={ordenar} />
             </th>
             <th>Deletar</th>
+            <th>Editar</th>
           </tr>
         </thead>
         <tbody>
@@ -61,7 +63,12 @@ export function CustomTable({ users }) {
               <td>{user.email}</td>
               <td>{user.createdAt}</td>
               <td>
-                <FaRegTrashAlt onClick={() => getDestroy(user._id)} />
+                <FaRegTrashAlt onClick={() => handleDestroy(user._id)} />
+              </td>
+              <td>
+                <Link passHref href={`/update/${user._id}`}>
+                  <FaEdit />
+                </Link>
               </td>
             </tr>
           ))}

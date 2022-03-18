@@ -50,7 +50,7 @@ export function CustomForm() {
         value={user.register}
         onChange={handleInputChange}
       />
-      <button type="submit" name="btn">
+      <button type="submit" name="btn" onClick={() => {}}>
         Cadastrar
       </button>
     </form>

@@ -11,8 +11,9 @@ export function CustomForm() {
     try {
       await api.post("/user", user);
     } catch (error) {
-      console.log(error);
-      router.push("/error");
+      if (error.response.data.message === "user alread exists") {
+        router.push("/error");
+      }
     }
 
     setUser({ name: "", email: "", login: "", register: "" });

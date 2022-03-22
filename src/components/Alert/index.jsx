@@ -6,7 +6,10 @@ export function Alert() {
   return (
     <div className={styles.containerError}>
       <div className={styles.content}>
-        <strong>Usuário já cadastrado</strong>
+        <strong>
+          Usuário já cadastrado para esse e-mail, tente novamente com um email
+          valido.
+        </strong>
         <button className={styles.btnBack} onClick={() => router.push("/")}>
           Voltar
         </button>

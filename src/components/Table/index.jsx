@@ -63,11 +63,14 @@ export function CustomTable({ users }) {
               <td>{user.email}</td>
               <td>{user.createdAt}</td>
               <td>
-                <FaRegTrashAlt onClick={() => handleDestroy(user._id)} />
+                <FaRegTrashAlt
+                  className={styles.btnEdit}
+                  onClick={() => handleDestroy(user._id)}
+                />
               </td>
               <td>
-                <Link passHref href={`/update/${user._id}`}>
-                  <FaEdit />
+                <Link as="a" passHref href={`/update/${user._id}`}>
+                  <FaEdit className={styles.btnEdit} />
                 </Link>
               </td>
             </tr>

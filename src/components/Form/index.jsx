@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { api } from "../../services/api";
+import { useRouter } from "next/router";
 
 export function CustomForm() {
   const [user, setUser] = useState({});
+  const router = useRouter();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -10,6 +12,7 @@ export function CustomForm() {
       await api.post("/user", user);
     } catch (error) {
       console.log(error);
+      router.push("/error");
     }
 
     setUser({ name: "", email: "", login: "", register: "" });

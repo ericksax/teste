@@ -64,3 +64,18 @@
   flex-direction: column;
   width: 100%;
 }
+
+.btnEdit {
+  cursor: "pointer";
+}
+
+.btnBack {
+  color: #fff;
+  background-color: rgb(0, 102, 255);
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+}
+.containerError {
+  margin-top: 40px;
+}

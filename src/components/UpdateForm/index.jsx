@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { api } from "../../services/api";
 import { useEffect } from "react";
 import styles from "../../../styles/Home.module.css";
@@ -20,7 +20,7 @@ export function UpdateForm({ history }) {
     try {
       await api.post("/updated", updatedUser);
     } catch (error) {
-      console.log(error);
+      console.log(err);
     }
 
     setUpdatedUser({ name: "", email: "", login: "", register: "" });

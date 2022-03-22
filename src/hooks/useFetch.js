@@ -7,7 +7,7 @@ export function useFetch() {
   useEffect(() => {
     api
       .get("user")
-      .then((response) => setUsers(response.data.users))
+      .then(({ data }) => setUsers(data.users))
       .catch((err) => {
         console.log(err);
       });
